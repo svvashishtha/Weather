@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel" type="com.example.sample.views.weather.HourlyWeatherViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="3:30 PM"
+                android:text="@{viewModel.time}"
+                android:id="@+id/hourly_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <com.example.sample.widgets.IconFontTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/weather_icon"
+                android:text="@{viewModel.icon}"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hourly_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+        />
+        <com.example.sample.widgets.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/precipitation_value"
+                app:layout_constraintEnd_toStartOf="@id/precipitation_value"
+                android:textSize="@dimen/text_size_small"
+                android:text="@string/wi_raindrop"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/precipitation_icon"
+        />
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="@{viewModel.rain}"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                app:layout_constraintTop_toBottomOf="@id/weather_icon"
+                app:layout_constraintStart_toEndOf="@id/precipitation_icon"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/precipitation_value"
+                android:layout_height="wrap_content"/>
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{viewModel.temperature}"
+                android:id="@+id/temperature_hourly"
+                app:layout_constraintTop_toBottomOf="@id/precipitation_value"
+        />
+        <com.example.sample.widgets.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/wind_bearing"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:rotation="@{viewModel.windIcon}"
+                android:text="@string/wi_wind_direction"
+                app:layout_constraintTop_toBottomOf="@id/temperature_hourly"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

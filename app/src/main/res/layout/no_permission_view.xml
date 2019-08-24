@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/no_permission_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+    <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/permission_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_location_off_24dp"
+            android:drawablePadding="@dimen/dimen_16dp"
+            android:drawableTint="@color/colorAccent"
+            android:padding="@dimen/dimen_25dp"
+            android:text="@string/location_permission_is_required_to_show_weather_updates" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/grant_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:text="@string/grant_permission"
+            android:textAllCaps="false"
+            android:textColor="@color/background_white" />
+</LinearLayout>

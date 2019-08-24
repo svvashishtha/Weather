@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="weatherViewModel"
+                type="com.example.sample.views.weather.WeatherViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_30dp"
+                android:drawableStart="@drawable/ic_location_on_black"
+                android:drawableTint="@color/colorAccent"
+                android:text="@{weatherViewModel.cityName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mundka" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@{weatherViewModel.time}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location"
+                tools:text="Sat 17 Aug 1:47 pm" />
+
+        <com.example.sample.widgets.IconFontTextView
+                android:id="@+id/weather_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="18sp"
+                android:text="@{weatherViewModel.iconText}"
+                app:layout_constraintBottom_toBottomOf="@id/temperature"
+                app:layout_constraintEnd_toStartOf="@id/temperature"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/temperature" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@{weatherViewModel.temperature}"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/weather_icon"
+                app:layout_constraintTop_toBottomOf="@id/time"
+                tools:text="23" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/temp_apparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{weatherViewModel.apparentTemperature}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/temperature"
+                tools:text="26/23" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@{weatherViewModel.desc}"
+                app:layout_constraintBottom_toTopOf="@id/precipitation_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/temp_apparent"
+                tools:text="Clear" />
+
+
+        <com.example.sample.widgets.IconFontTextView
+                android:id="@+id/precipitation_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:text="@string/wi_raindrop"
+                android:textSize="@dimen/dimen_30dp"
+                app:layout_constraintEnd_toStartOf="@id/precipitation_title"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/precipitation_title"
+                tools:ignore="SpUsage" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/precipitation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/precipitation"
+                app:layout_constraintEnd_toStartOf="@id/precipitation_uv_divider"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/precipitation_icon"
+                app:layout_constraintTop_toBottomOf="@id/desc" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/precipitation_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@{weatherViewModel.precipitation}"
+                app:layout_constraintStart_toStartOf="@id/precipitation_title"
+                app:layout_constraintTop_toBottomOf="@id/precipitation_title" />
+
+        <com.example.sample.widgets.IconFontTextView
+                android:id="@+id/uv_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:text="@string/wi_barometer"
+                android:textSize="@dimen/dimen_30dp"
+                app:layout_constraintEnd_toStartOf="@id/uv_title"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/precipitation_uv_divider"
+                app:layout_constraintTop_toTopOf="@id/uv_title"
+                tools:ignore="SpUsage" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/uv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@string/uv_index"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/uv_icon"
+                app:layout_constraintTop_toBottomOf="@id/desc" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/uv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@{weatherViewModel.uvIndex}"
+                app:layout_constraintStart_toStartOf="@id/uv_title"
+                app:layout_constraintTop_toBottomOf="@id/uv_title" />
+
+        <View
+                android:id="@+id/precipitation_uv_divider"
+                android:layout_width="@dimen/dimen_1dp"
+                android:layout_height="0dp"
+                android:background="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@id/precipitation_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/precipitation_title" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hourly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:paddingStart="@dimen/dimen_16dp"
+                android:paddingEnd="@dimen/dimen_16dp"
+                app:layout_constraintBottom_toTopOf="@id/weather_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/precipitation_value" />
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/weather_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:background="@drawable/corner_radius_background"
+                app:fabAlignmentMode="center"
+                app:fabCradleMargin="@dimen/dimen_16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hourly"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/background_white">
+
+            <com.google.android.material.tabs.TabItem
+                    android:id="@+id/hourly_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hourly" />
+
+            <com.google.android.material.tabs.TabItem
+                    android:id="@+id/daily_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daily" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

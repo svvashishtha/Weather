@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sample</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="temperature">%.0f"\u00B0"</string>
+    <string name="apparent_temperature">Feels like "</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="location_permission_is_required_to_show_weather_updates">Location Permission is required to show
+        weather updates.
+    </string>
+    <string name="location">Location</string>
+    <string name="location_rationale">Location permission is required for weather updates.</string>
+    <string name="cancel">Cancel</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="uv_index">UV Index</string>
+    <string name="hourly">Hourly</string>
+    <string name="daily">Daily</string>
+
+</resources>

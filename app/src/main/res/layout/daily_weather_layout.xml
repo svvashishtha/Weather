@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.example.sample.views.weather.DailyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp"
+            >
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/daily_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.day}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Today" />
+
+        <com.example.sample.widgets.IconFontTextView
+                android:id="@+id/weather_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.icon}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/daily_day" />
+
+        <com.example.sample.widgets.IconFontTextView
+                android:id="@+id/precipitation_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wi_raindrop"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toStartOf="@id/precipitation_value"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/precipitation_value" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/precipitation_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:text="@{viewModel.rain}"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/precipitation_icon"
+                app:layout_constraintTop_toBottomOf="@id/weather_icon" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/temperature_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:text="@{viewModel.temperature}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/precipitation_value"
+                tools:text="33/24" />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/temp_apparent_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:text="@{viewModel.apparentTemperature}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/temperature_daily"
+                tools:text="Feels like \n40/38" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
